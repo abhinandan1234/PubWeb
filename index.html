@@ -52,22 +52,22 @@
                                 channelKey.forEach(chanItem => {
                                     switch (channelItem) {
                                         case 'New Channel':
-                                            document.getElementById('bdy').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy').innerHTML;
                                             break;
                                         case 'avi':
-                                            document.getElementById('bdy2').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy2').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy2').innerHTML;
                                             break;
                                         case 'matt':
-                                            document.getElementById('bdy3').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy3').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy3').innerHTML;
                                             break;
                                         case 'vishal':
-                                            document.getElementById('bdy4').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy4').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy4').innerHTML;
                                             break;
                                         case 'vaishali':
-                                            document.getElementById('bdy5').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy5').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy5').innerHTML;
                                             break;
                                         case 'matthew':
-                                            document.getElementById('bdy6').innerHTML += "<br />" + chanItem.message.content;
+                                            document.getElementById('bdy6').innerHTML = "<br />" + chanItem.message.content + document.getElementById('bdy6').innerHTML;
                                             break;
                                     }
                                 })
@@ -94,22 +94,22 @@
                 }
                 switch (m.channel) {
                     case 'New Channel':
-                        document.getElementById('bdy').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy').innerHTML = "<br />" + m.message.content + document.getElementById('bdy').innerHTML;
                         break;
                     case 'avi':
-                        document.getElementById('bdy2').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy2').innerHTML = "<br />" + m.message.content + document.getElementById('bdy2').innerHTML;
                         break;
                     case 'matt':
-                        document.getElementById('bdy3').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy3').innerHTML = "<br />" + m.message.content + document.getElementById('bdy3').innerHTML;
                         break;
                     case 'vishal':
-                        document.getElementById('bdy4').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy4').innerHTML = "<br />" + m.message.content + document.getElementById('bdy4').innerHTML;
                         break;
                     case 'vaishali':
-                        document.getElementById('bdy5').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy5').innerHTML = "<br />" + m.message.content + document.getElementById('bdy5').innerHTML;
                         break;
                     case 'matthew':
-                        document.getElementById('bdy6').innerHTML += "<br />" + m.message.content
+                        document.getElementById('bdy6').innerHTML = "<br />" + m.message.content + document.getElementById('bdy6').innerHTML;
                         break;
                     default:
                         alert('No channels matched');
@@ -162,7 +162,7 @@
     </script>
 </head>
 
-<body onload="loadMessages()" style="display: flex;justify-content: space-evenly">
+<body onload="loadMessages()" style="display: flex;justify-content: space-evenly;overflow: scroll">
     <div>
         <div class="channelName">
             New Channel
