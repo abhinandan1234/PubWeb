@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <style>
+        .btn {
+            font-size: 9px;
+            background-color: black;
+            color: wheat;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 4px;
+        }
+    </style>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.4.min.js"> </script>
+    <script>
+        var pubnub = new PubNub({
+            publishKey: 'pub-c-c7d9eae7-7df6-4ccf-b5e1-08a7c5472f25',
+            subscribeKey: 'sub-c-500b7704-d291-11eb-95ea-1ab188f49893',
+            uuid: Math.floor(Math.random() * 100) + ''
+        })
+        var allChannels = [
+            "New Channel",
+            "avi",
+            "matt",
+            "vishal",
+            "vaishali",
+            "matthew",
+            "atul"
+        ]
+        function loadMessages() {
+            allChannels.forEach(channelItem => {
+                pubnub.fetchMessages(
+                    {
+                        channels: [channelItem],
+                        end: Date.now() + '',
+                        count: 50 // default/max is 25 messages for multiple channels (up to 500)
+                    },
+                    function (status, response) {
+                        // console.log(status, response);
+                        if (response.channels) {
+                            let chans = response.channels;
+                            console.log('chans', chans);
+                            channelKey = chans[`${Object.keys(chans)[0]}`]
+                            if (channelKey) {
+                                channelKey.forEach(chanItem => {
+                                    switch (channelItem) {
+                                        case 'New Channel':
+                                            document.getElementById('bdy').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                        case 'avi':
+                                            document.getElementById('bdy2').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                        case 'matt':
+                                            document.getElementById('bdy3').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                        case 'vishal':
+                                            document.getElementById('bdy4').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                        case 'vaishali':
+                                            document.getElementById('bdy5').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                        case 'matthew':
+                                            document.getElementById('bdy6').innerHTML += "<br />" + chanItem.message.content;
+                                            break;
+                                    }
+                                })
+                            }
+                        }
+                    }
+                );
+            })
+        }
+        function sendMessage(txt, channelName) {
+            pubnub.publish({
+                channel: channelName,
+                storeInHistory: true,
+                message: {
+                    content: txt
+                }
+            })
+        }
+        pubnub.addListener({
+            message: function (m) {
+                console.log('m', m)
+                if (!m || !m.channel) {
+                    return;
+                }
+                switch (m.channel) {
+                    case 'New Channel':
+                        document.getElementById('bdy').innerHTML += "<br />" + m.message.content
+                        break;
+                    case 'avi':
+                        document.getElementById('bdy2').innerHTML += "<br />" + m.message.content
+                        break;
+                    case 'matt':
+                        document.getElementById('bdy3').innerHTML += "<br />" + m.message.content
+                        break;
+                    case 'vishal':
+                        document.getElementById('bdy4').innerHTML += "<br />" + m.message.content
+                        break;
+                    case 'vaishali':
+                        document.getElementById('bdy5').innerHTML += "<br />" + m.message.content
+                        break;
+                    case 'matthew':
+                        document.getElementById('bdy6').innerHTML += "<br />" + m.message.content
+                        break;
+                    default:
+                        alert('No channels matched');
+                        break;
+                }
+            }
+        })
+        pubnub.subscribe({
+            channels: ['New Channel', 'avi', 'matt', 'vishal', 'vaishali', 'matthew']
+        })
+        function onSendClick(num) {
+            event.preventDefault();
+            var mm;
+            switch (num) {
+                case 1:
+                    mm = document.getElementById('inp').value;
+                    sendMessage(mm, 'New Channel');
+                    document.getElementById('inp').value = "";
+                    break;
+                case 2:
+                    mm = document.getElementById('inp2').value;
+                    sendMessage(mm, 'avi');
+                    document.getElementById('inp2').value = "";
+                    break;
+                case 3:
+                    mm = document.getElementById('inp3').value;
+                    sendMessage(mm, 'matt');
+                    document.getElementById('inp3').value = "";
+                    break;
+                case 4:
+                    mm = document.getElementById('inp4').value;
+                    sendMessage(mm, 'vishal');
+                    document.getElementById('inp4').value = "";
+                    break;
+                case 5:
+                    mm = document.getElementById('inp5').value;
+                    sendMessage(mm, 'vaishali');
+                    document.getElementById('inp5').value = "";
+                    break;
+                case 5:
+                    mm = document.getElementById('inp6').value;
+                    sendMessage(mm, 'matthew');
+                    document.getElementById('inp6').value = "";
+                    break;
+                default:
+                    alert('no cases matched!')
+                    return
+            }
+        }
+    </script>
+</head>
+
+<body onload="loadMessages()" style="display: flex;justify-content: space-evenly">
+    <div>
+        <form onsubmit="onSendClick(1)">
+            <input id='inp' />
+            <button class="btn" onclick="onSendClick(1)">Send</button>
+        </form>
+        <div id='bdy'>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="onSendClick(2)">
+            <input id='inp2' />
+            <button class="btn" onclick="onSendClick(2)">Send</button>
+        </form>
+        <div id='bdy2'>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="onSendClick(3)">
+            <input id='inp3' />
+            <button class="btn" onclick="onSendClick(3)">Send</button>
+        </form>
+        <div id='bdy3'>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="onSendClick(4)">
+            <input id='inp4' />
+            <button class="btn" onclick="onSendClick(4)">Send</button>
+        </form>
+        <div id='bdy4'>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="onSendClick(5)">
+            <input id='inp5' />
+            <button class="btn" onclick="onSendClick(5)">Send</button>
+        </form>
+        <div id='bdy5'>
+        </div>
+    </div>
+
+    <div>
+        <form onsubmit="onSendClick(6)">
+            <input id='inp6' />
+            <button class="btn" onclick="onSendClick(6)">Send</button>
+        </form>
+        <div id='bdy6'>
+        </div>
+    </div>
+</body>
+
+</html>
