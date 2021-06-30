@@ -78,13 +78,15 @@
             })
         }
         function sendMessage(txt, channelName) {
-            pubnub.publish({
-                channel: channelName,
-                storeInHistory: true,
-                message: {
-                    content: txt
-                }
-            })
+            if (txt && txt.trim()) {
+                pubnub.publish({
+                    channel: channelName,
+                    storeInHistory: true,
+                    message: {
+                        content: txt.trim()
+                    }
+                })
+            }
         }
         pubnub.addListener({
             message: function (m) {
