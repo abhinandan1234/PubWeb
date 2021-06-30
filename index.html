@@ -79,6 +79,7 @@
         }
         function sendMessage(txt, channelName) {
             if (txt && txt.trim()) {
+                pubnub.setUUID(channelName + ' user')
                 pubnub.publish({
                     channel: channelName,
                     storeInHistory: true,
