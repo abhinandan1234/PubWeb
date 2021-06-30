@@ -10,6 +10,14 @@
             padding-bottom: 5px;
             border-radius: 4px;
         }
+
+        .channelName {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: darkslateblue;
+        }
     </style>
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.4.min.js"> </script>
     <script>
@@ -24,8 +32,7 @@
             "matt",
             "vishal",
             "vaishali",
-            "matthew",
-            "atul"
+            "matthew"
         ]
         function loadMessages() {
             allChannels.forEach(channelItem => {
@@ -157,6 +164,9 @@
 
 <body onload="loadMessages()" style="display: flex;justify-content: space-evenly">
     <div>
+        <div class="channelName">
+            New Channel
+        </div>
         <form onsubmit="onSendClick(1)">
             <input id='inp' />
             <button class="btn" onclick="onSendClick(1)">Send</button>
@@ -166,6 +176,9 @@
     </div>
 
     <div>
+        <div class="channelName">
+            avi
+        </div>
         <form onsubmit="onSendClick(2)">
             <input id='inp2' />
             <button class="btn" onclick="onSendClick(2)">Send</button>
@@ -175,6 +188,9 @@
     </div>
 
     <div>
+        <div class="channelName">
+            matt
+        </div>
         <form onsubmit="onSendClick(3)">
             <input id='inp3' />
             <button class="btn" onclick="onSendClick(3)">Send</button>
@@ -184,6 +200,9 @@
     </div>
 
     <div>
+        <div class="channelName">
+            vishal
+        </div>
         <form onsubmit="onSendClick(4)">
             <input id='inp4' />
             <button class="btn" onclick="onSendClick(4)">Send</button>
@@ -193,6 +212,9 @@
     </div>
 
     <div>
+        <div class="channelName">
+            vaishali
+        </div>
         <form onsubmit="onSendClick(5)">
             <input id='inp5' />
             <button class="btn" onclick="onSendClick(5)">Send</button>
@@ -202,6 +224,9 @@
     </div>
 
     <div>
+        <div class="channelName">
+            matthew
+        </div>
         <form onsubmit="onSendClick(6)">
             <input id='inp6' />
             <button class="btn" onclick="onSendClick(6)">Send</button>
