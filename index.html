@@ -11,6 +11,14 @@
             border-radius: 4px;
         }
 
+        .row {
+            max-width: 220px;
+            padding: 20px;
+            border: 1px dotted blue;
+            background-color: aliceblue;
+            overflow: scroll
+        }
+
         .channelName {
             font-weight: bold;
             text-align: center;
@@ -165,8 +173,8 @@
     </script>
 </head>
 
-<body onload="loadMessages()" style="display: flex;justify-content: space-evenly;overflow: scroll">
-    <div>
+<body onload="loadMessages()" style="display: flex;justify-content: space-evenly;background-color: gray">
+    <div class="row">
         <div class="channelName">
             New Channel
         </div>
@@ -178,7 +186,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
         <div class="channelName">
             avi
         </div>
@@ -190,7 +198,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
         <div class="channelName">
             matt
         </div>
@@ -202,7 +210,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
         <div class="channelName">
             vishal
         </div>
@@ -214,7 +222,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
         <div class="channelName">
             vaishali
         </div>
@@ -226,7 +234,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
         <div class="channelName">
             matthew
         </div>
